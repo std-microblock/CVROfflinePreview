@@ -10,8 +10,10 @@ Add the ability to open the local world/avatar bundled file directly without upl
 3. Open the game, and press R, then you'll see the mod's menu
 4. Login
 5. Select your map/avatar project
-6. Bundle and upload your map/avatar, when uploading, click the button to load it.
-> You can also click `Start Live Reload` and then every time you bundle it will auto reload the map for you.
+6. Add `CCKBundleExport.unitypackage` to your package and restart unity
+7. Click `CCK Bundle` and bundle map/avatar, after bundling, click the button to load it.
+
+![image](https://user-images.githubusercontent.com/66859419/182183975-bebe222f-1fbb-456d-a016-6ec2594e2919.png)
 
 ## For offline use
 1. Install melonloader
@@ -19,12 +21,12 @@ Add the ability to open the local world/avatar bundled file directly without upl
 3. Open the game, and press R, then you'll see the mod's menu
 4. Click `Force init game without login`
 5. Select your map/avatar project
-6. Add `CCKNoLoginPatch.unitypackage` to your package and restart unity
-7. Click `CCK Login Patch / Patch CCK` in the menu bar and restart unity again.
+6. Add `CCKBundleExport.unitypackage` to your package and restart unity
+7. Click `CCK Bundle` and bundle map/avatar, after bundling, click the button to load it.
 
-![image](https://user-images.githubusercontent.com/66859419/182166203-03447bdb-948a-466f-a875-1e7733a9fa78.png)
+![image](https://user-images.githubusercontent.com/66859419/182183975-bebe222f-1fbb-456d-a016-6ec2594e2919.png)
 
-8. Bundle and "upload" your map/avatar, when uploading, click the button to load it. ( The file won't be uploaded when the server's down )
+
 > You can also click `Start Live Reload` and then every time you bundle it will auto reload the map for you.
 
 
@@ -39,8 +41,8 @@ Add the ability to open the local world/avatar bundled file directly without upl
 2. 将release中的.dll放入`Mods`文件夹
 3. 打开游戏，按R，然后你会看到模组的菜单
 4. 登录
-5. 选择您的地图/模型项目
-6. 上传您的地图/模型，在上传时点击`Load`按钮加载。
+6. 将`CCKBundleExport.unitypackage`添加到你的包中并重启unity
+7. 点击`CCK Bundle`，打包你的地图/模型，打包完成后点击Load按钮来在游戏中加载。
 > 您也可以单击“开始实时重新加载”，然后每次捆绑时它都会自动为您重新加载地图。
 
 ## 离线使用
@@ -49,10 +51,10 @@ Add the ability to open the local world/avatar bundled file directly without upl
 3. 打开游戏，按R，然后你会看到模组的菜单
 4. 点击`不登录强制初始化游戏(Force init game without login)`
 5. 选择您的地图/模型项目
-6. 将`CCKNoLoginPatch.unitypackage`添加到你的包，重启unity
-7. 点击菜单栏中的`CCK Login Patch / Patch CCK`，再次重启unity。
+6. 将`CCKBundleExport.unitypackage`添加到你的包中并重启unity
+7. 点击`CCK Bundle`，打包你的地图/模型，打包完成后点击Load按钮来在游戏中加载。
 
-![图片](https://user-images.githubusercontent.com/66859419/182166203-03447bdb-948a-466f-a875-1e7733a9fa78.png)
+![image](https://user-images.githubusercontent.com/66859419/182183975-bebe222f-1fbb-456d-a016-6ec2594e2919.png)
 
 8. “上传”您的地图/模型，上传时，单击按钮来加载它。 （服务器宕机时文件不会上传）
 > 您也可以单击“开始实时重新加载”，然后每次重新打包时它都会自动为您重新加载地图。
