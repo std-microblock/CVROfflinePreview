@@ -15,16 +15,18 @@ using ABI_RC.Core.Extensions;
 
 namespace CVROfflinePreview
 {
+   
     public class CVROfflinePreview : MelonMod
     {
 
-
-        Form1 ctrlForm = new Form1();
+ Form1 ctrlForm = null;
+        
         public override void OnUpdate()
         {
             
             if (Input.GetKeyDown(KeyCode.R))
                 {
+                    if(ctrlForm is null) ctrlForm=new Form1();
                     ctrlForm.Show();
                 }
         }

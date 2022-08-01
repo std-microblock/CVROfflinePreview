@@ -117,3 +117,10 @@ L:\Projects\CVROfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.dll
 L:\Projects\CVROfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.pdb
 L:\Projects\CVROfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.Form1.resources
 L:\Projects\CVROfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.csproj.GenerateResource.cache
+L:\Projects\CVROfflinePreview\CVR_OfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.csproj.AssemblyReference.cache
+L:\Projects\CVROfflinePreview\CVR_OfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.Form1.resources
+L:\Projects\CVROfflinePreview\CVR_OfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.Resource1.resources
+L:\Projects\CVROfflinePreview\CVR_OfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.csproj.GenerateResource.cache
+L:\Projects\CVROfflinePreview\CVR_OfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.csproj.CoreCompileInputs.cache
+L:\Projects\CVROfflinePreview\CVR_OfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.dll
+L:\Projects\CVROfflinePreview\CVR_OfflinePreview\CVROfflinePreview\obj\Debug\CVROfflinePreview.pdb

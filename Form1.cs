@@ -35,7 +35,7 @@ namespace CVROfflinePreview
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ABI_RC.Core.Base.Content.WorldJoinPrevented = true;
+
             SceneManager.LoadSceneAsync("Init");
         }
 
