@@ -1,5 +1,6 @@
 ﻿using ABI_RC.Core.EventSystem;
 using ABI_RC.Core.IO;
+using ABI_RC.Core.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnityEngine.SceneManagement;
+using static ABI_RC.Core.Util.CVRSyncHelper;
 
 namespace CVROfflinePreview
 {
@@ -24,8 +26,8 @@ namespace CVROfflinePreview
 
         private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-                    e.Cancel = true;
-                    Hide();
+            e.Cancel = true;
+            Hide();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -33,7 +35,7 @@ namespace CVROfflinePreview
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void forceInit_Click(object sender, EventArgs e)
         {
 
             SceneManager.LoadSceneAsync("Init");
@@ -44,10 +46,11 @@ namespace CVROfflinePreview
             watcher.Changed += new FileSystemEventHandler(onBundleGenerated);
             watcher.Created += new FileSystemEventHandler(onBundleGenerated);
 
-            projects =getProjects();
+            projects = getProjects();
 
-            comboBox1.Items.AddRange(projects.ToArray());
-            comboBox2.Items.AddRange(projects.ToArray());
+            localMapSelect.Items.AddRange(projects.ToArray());
+            localAvatarSelect.Items.AddRange(projects.ToArray());
+            localPropSelect.Items.AddRange(projects.ToArray());
         }
 
         FileSystemWatcher watcher = new FileSystemWatcher();
@@ -55,13 +58,14 @@ namespace CVROfflinePreview
         long lastUpdTime = 0, lastOpenTime = 0;
         bool disableLiveReload = false;
         List<String> projects;
-       
 
-        static public List<String> getProjects() {
-            List<String> tmp=new List<String>();
+
+        static public List<String> getProjects()
+        {
+            List<String> tmp = new List<String>();
 
             var bundleFiles = Directory.GetDirectories(getBundleFilePath(""));
-            foreach(var bundleFile in bundleFiles)
+            foreach (var bundleFile in bundleFiles)
             {
                 tmp.Add(bundleFile.Split('/', '\\').Last());
             }
@@ -71,15 +75,19 @@ namespace CVROfflinePreview
 
         public enum BundleFileType
         {
-            WorldBundle,AvatarBundle,Folder
+            WorldBundle, AvatarBundle, Folder, Spawnable
         }
 
-        static public string getBundleFilePath(string projectName,BundleFileType fileType=BundleFileType.Folder)
+        static public string getBundleFilePath(string projectName, BundleFileType fileType = BundleFileType.Folder)
         {
             var localLow = Environment.ExpandEnvironmentVariables("%AppData%").Replace("Roaming", "LocalLow");
 
             switch (fileType)
             {
+                case BundleFileType.Spawnable:
+                    {
+                        return $"{localLow}/DefaultCompany/{projectName}/bundle.cvrprop";
+                    }
                 case BundleFileType.WorldBundle:
                     {
                         return $"{localLow}/DefaultCompany/{projectName}/bundle.cvrworld";
@@ -113,7 +121,7 @@ namespace CVROfflinePreview
         private void onBundleGenerated(object source, FileSystemEventArgs e)
         {
             if (disableLiveReload) return;
-            
+
             if (e.Name.EndsWith("bundle.cvrworld"))
             {
                 Task.Run(async () =>
@@ -134,11 +142,12 @@ namespace CVROfflinePreview
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) { 
-            if(comboBox1.SelectedIndex==-1)return;
-            var proj = projects[comboBox1.SelectedIndex];
+        private void btnLoadMapClick(object sender, EventArgs e)
+        {
+            if (localMapSelect.SelectedIndex == -1) return;
+            var proj = projects[localMapSelect.SelectedIndex];
 
-            if (File.Exists(getBundleFilePath(proj,BundleFileType.WorldBundle)))
+            if (File.Exists(getBundleFilePath(proj, BundleFileType.WorldBundle)))
             {
                 LoadLocalWorld(getBundleFilePath(proj, BundleFileType.WorldBundle));
             }
@@ -148,19 +157,21 @@ namespace CVROfflinePreview
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnMapLiveReloadClick(object sender, EventArgs e)
         {
             if (watcher.EnableRaisingEvents)
             {
                 watcher.EnableRaisingEvents = false;
-                button2.Text = "Start Live Reload";
+                btnMapLiveReload.Text = "Start Live Reload";
+                localMapSelect.Enabled = true;
             }
             else
             {
-                if (comboBox1.SelectedIndex == -1) return;
-                var proj = projects[comboBox1.SelectedIndex];
+                if (localMapSelect.SelectedIndex == -1) return;
+                var proj = projects[localMapSelect.SelectedIndex];
                 startWatching(proj);
-                button2.Text = "Stop Live Reload";
+                localMapSelect.Enabled = false;
+                btnMapLiveReload.Text = "Stop Live Reload";
             }
         }
 
@@ -169,10 +180,10 @@ namespace CVROfflinePreview
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnLoadAvatrClick(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex == -1) return;
-            var proj = projects[comboBox2.SelectedIndex];
+            if (localAvatarSelect.SelectedIndex == -1) return;
+            var proj = projects[localAvatarSelect.SelectedIndex];
 
             if (File.Exists(getBundleFilePath(proj, BundleFileType.AvatarBundle)))
             {
@@ -213,6 +224,59 @@ namespace CVROfflinePreview
             {
                 MessageBox.Show($"Failed: {e.ToString()}");
             }
+
+        }
+
+        public void LoadLocalProp(string localProp)
+        {
+            try
+            {
+                byte[] contentBytes = File.ReadAllBytes(localProp);
+
+                LoadLocalProp(contentBytes, float.Parse(propPosX.Text)
+                                          , float.Parse(propPosY.Text)
+                                          , float.Parse(propPosZ.Text));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Failed: {e.ToString()}");
+            }
+
+        }
+
+        public void LoadLocalProp(byte[] localProp, float PosX, float PosY, float PosZ, string objectId = "00000000-0000-0000-0000-000000000000")
+        {
+            try
+            {
+                var propData = new PropData();
+                propData.InstanceId = Guid.NewGuid().ToString();
+
+                propData.PositionX = PosX;
+                propData.PositionY = PosY;
+                propData.PositionZ = PosZ;
+
+                CVRSyncHelper.Props.Add(propData);
+
+                PropQueueSystem.Instance.AddCoroutine(
+                    CVRObjectLoader.Instance.InstantiateProp(
+                        DownloadJob.ObjectType.Prop, new AssetManagement.PropTags { }, objectId, propData.InstanceId, localProp
+                        )
+                    );
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Failed: {e.ToString()}");
+            }
+
+        }
+
+        private void btnLoadPropClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void localPropSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
 

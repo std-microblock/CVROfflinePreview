@@ -3,3 +3,4 @@ obj/Debug/CVROfflinePreview.csproj.AssemblyReference.cache
 *.cache
 *.dll
 *.pdb
+*.vsidx

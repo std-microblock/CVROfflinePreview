@@ -35,5 +35,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-[assembly: MelonInfo(typeof(CVROfflinePreview.CVROfflinePreview), "CVROfflinePreview", "0.1.0", "MicroBlock")]
+[assembly: MelonInfo(typeof(CVROfflinePreview.CVROfflinePreview), "CVROfflinePreview", "0.1.1", "MicroBlock")]
 [assembly: MelonGame(null,null)]
