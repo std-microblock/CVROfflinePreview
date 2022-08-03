@@ -298,7 +298,7 @@ namespace CVROfflinePreview
 
         private void getPlayerPos_Click(object sender, EventArgs e)
         {
-                var pos=ABI_RC.Core.Player.PlayerSetup.Instance._avatar.transform.position;
+                var pos=ABI_RC.Core.Player.PlayerSetup.Instance.transform.position;
 
                  propPosX.Text = pos.x.ToString();
                  propPosY.Text = pos.y.ToString();
@@ -311,7 +311,11 @@ namespace CVROfflinePreview
             {
                 byte[] contentBytes = File.ReadAllBytes(localWorld);
                 CVRObjectLoader.Instance.InitiateLoadIntoWorld(DownloadJob.ObjectType.World, objectId, contentBytes);
-                LoadLocalAvatar(Resource1.testAvatar);
+                if (loadDefaultAvatar.Checked)
+                {
+                    LoadLocalAvatar(Resource1.testAvatar);
+                }
+                
             }
             catch (Exception e)
             {

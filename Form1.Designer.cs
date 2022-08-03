@@ -46,6 +46,7 @@
             this.propPosZ = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.getPlayerPos = new System.Windows.Forms.Button();
+            this.loadDefaultAvatar = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -100,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 167);
+            this.label2.Location = new System.Drawing.Point(7, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(293, 17);
             this.label2.TabIndex = 5;
@@ -109,14 +110,14 @@
             // localAvatarSelect
             // 
             this.localAvatarSelect.FormattingEnabled = true;
-            this.localAvatarSelect.Location = new System.Drawing.Point(33, 187);
+            this.localAvatarSelect.Location = new System.Drawing.Point(33, 217);
             this.localAvatarSelect.Name = "localAvatarSelect";
             this.localAvatarSelect.Size = new System.Drawing.Size(247, 25);
             this.localAvatarSelect.TabIndex = 6;
             // 
             // btnLoadAvatar
             // 
-            this.btnLoadAvatar.Location = new System.Drawing.Point(33, 218);
+            this.btnLoadAvatar.Location = new System.Drawing.Point(33, 248);
             this.btnLoadAvatar.Name = "btnLoadAvatar";
             this.btnLoadAvatar.Size = new System.Drawing.Size(247, 23);
             this.btnLoadAvatar.TabIndex = 7;
@@ -126,7 +127,7 @@
             // 
             // btnLoadProp
             // 
-            this.btnLoadProp.Location = new System.Drawing.Point(33, 336);
+            this.btnLoadProp.Location = new System.Drawing.Point(33, 366);
             this.btnLoadProp.Name = "btnLoadProp";
             this.btnLoadProp.Size = new System.Drawing.Size(247, 23);
             this.btnLoadProp.TabIndex = 10;
@@ -137,7 +138,7 @@
             // localPropSelect
             // 
             this.localPropSelect.FormattingEnabled = true;
-            this.localPropSelect.Location = new System.Drawing.Point(33, 277);
+            this.localPropSelect.Location = new System.Drawing.Point(33, 307);
             this.localPropSelect.Name = "localPropSelect";
             this.localPropSelect.Size = new System.Drawing.Size(247, 25);
             this.localPropSelect.TabIndex = 9;
@@ -146,7 +147,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 257);
+            this.label3.Location = new System.Drawing.Point(12, 287);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(286, 17);
             this.label3.TabIndex = 8;
@@ -154,7 +155,7 @@
             // 
             // propPosX
             // 
-            this.propPosX.Location = new System.Drawing.Point(54, 308);
+            this.propPosX.Location = new System.Drawing.Point(54, 338);
             this.propPosX.Name = "propPosX";
             this.propPosX.Size = new System.Drawing.Size(46, 23);
             this.propPosX.TabIndex = 11;
@@ -163,7 +164,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 311);
+            this.label4.Location = new System.Drawing.Point(32, 341);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 17);
             this.label4.TabIndex = 12;
@@ -171,7 +172,7 @@
             // 
             // propPosY
             // 
-            this.propPosY.Location = new System.Drawing.Point(141, 308);
+            this.propPosY.Location = new System.Drawing.Point(141, 338);
             this.propPosY.Name = "propPosY";
             this.propPosY.Size = new System.Drawing.Size(46, 23);
             this.propPosY.TabIndex = 13;
@@ -180,7 +181,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(119, 311);
+            this.label5.Location = new System.Drawing.Point(119, 341);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 17);
             this.label5.TabIndex = 14;
@@ -188,7 +189,7 @@
             // 
             // propPosZ
             // 
-            this.propPosZ.Location = new System.Drawing.Point(234, 308);
+            this.propPosZ.Location = new System.Drawing.Point(234, 338);
             this.propPosZ.Name = "propPosZ";
             this.propPosZ.Size = new System.Drawing.Size(46, 23);
             this.propPosZ.TabIndex = 15;
@@ -197,7 +198,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(212, 311);
+            this.label6.Location = new System.Drawing.Point(212, 341);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 17);
             this.label6.TabIndex = 16;
@@ -205,7 +206,7 @@
             // 
             // getPlayerPos
             // 
-            this.getPlayerPos.Location = new System.Drawing.Point(35, 367);
+            this.getPlayerPos.Location = new System.Drawing.Point(35, 397);
             this.getPlayerPos.Name = "getPlayerPos";
             this.getPlayerPos.Size = new System.Drawing.Size(244, 22);
             this.getPlayerPos.TabIndex = 17;
@@ -213,12 +214,23 @@
             this.getPlayerPos.UseVisualStyleBackColor = true;
             this.getPlayerPos.Click += new System.EventHandler(this.getPlayerPos_Click);
             // 
+            // loadDefaultAvatar
+            // 
+            this.loadDefaultAvatar.AutoSize = true;
+            this.loadDefaultAvatar.Location = new System.Drawing.Point(38, 158);
+            this.loadDefaultAvatar.Name = "loadDefaultAvatar";
+            this.loadDefaultAvatar.Size = new System.Drawing.Size(140, 21);
+            this.loadDefaultAvatar.TabIndex = 18;
+            this.loadDefaultAvatar.Text = "Load default avatar";
+            this.loadDefaultAvatar.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(308, 471);
+            this.Controls.Add(this.loadDefaultAvatar);
             this.Controls.Add(this.getPlayerPos);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.propPosZ);
@@ -272,5 +284,6 @@
         private System.Windows.Forms.TextBox propPosZ;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button getPlayerPos;
+        private System.Windows.Forms.CheckBox loadDefaultAvatar;
     }
 }
