@@ -1,5 +1,6 @@
 ﻿using ABI_RC.Core.EventSystem;
 using ABI_RC.Core.IO;
+using ABI_RC.Core.Player;
 using ABI_RC.Core.Util;
 using System;
 using System.Collections.Generic;
@@ -134,7 +135,7 @@ namespace CVROfflinePreview
                     if (lastUpdTime == nowTime)
                     {
                         disableLiveReload = true;
-                        await LoadLocalWorld(e.FullPath);
+                        LoadLocalWorld(e.FullPath);
                         lastOpenTime = nowTime;
                         disableLiveReload = false;
                     }
@@ -249,11 +250,16 @@ namespace CVROfflinePreview
             try
             {
                 var propData = new PropData();
+
+                propData.ObjectId = objectId;
                 propData.InstanceId = Guid.NewGuid().ToString();
 
                 propData.PositionX = PosX;
                 propData.PositionY = PosY;
                 propData.PositionZ = PosZ;
+                propData.RotationX = 0;
+                propData.RotationY = 0;
+                propData.RotationZ = 0;
 
                 CVRSyncHelper.Props.Add(propData);
 
@@ -272,7 +278,17 @@ namespace CVROfflinePreview
 
         private void btnLoadPropClick(object sender, EventArgs e)
         {
+            if (localPropSelect.SelectedIndex == -1) return;
+            var proj = projects[localPropSelect.SelectedIndex];
 
+            if (File.Exists(getBundleFilePath(proj, BundleFileType.Spawnable)))
+            {
+                LoadLocalProp(getBundleFilePath(proj, BundleFileType.Spawnable));
+            }
+            else
+            {
+                MessageBox.Show($"There's no bundle file for this project now. Please click this button only during avatar file upload process.");
+            }
         }
 
         private void localPropSelect_SelectedIndexChanged(object sender, EventArgs e)
@@ -280,7 +296,16 @@ namespace CVROfflinePreview
 
         }
 
-        public async Task LoadLocalWorld(string localWorld, string objectId = "00000000-0000-0000-0000-000000000000")
+        private void getPlayerPos_Click(object sender, EventArgs e)
+        {
+                var pos=ABI_RC.Core.Player.PlayerSetup.Instance._avatar.transform.position;
+
+                 propPosX.Text = pos.x.ToString();
+                 propPosY.Text = pos.y.ToString();
+                 propPosZ.Text = pos.z.ToString();
+        }
+
+        public void LoadLocalWorld(string localWorld, string objectId = "00000000-0000-0000-0000-000000000000")
         {
             try
             {

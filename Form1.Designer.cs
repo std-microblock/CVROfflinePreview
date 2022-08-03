@@ -45,6 +45,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.propPosZ = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.getPlayerPos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -202,12 +203,23 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Z";
             // 
+            // getPlayerPos
+            // 
+            this.getPlayerPos.Location = new System.Drawing.Point(35, 367);
+            this.getPlayerPos.Name = "getPlayerPos";
+            this.getPlayerPos.Size = new System.Drawing.Size(244, 22);
+            this.getPlayerPos.TabIndex = 17;
+            this.getPlayerPos.Text = "Get Player\'s Pos";
+            this.getPlayerPos.UseVisualStyleBackColor = true;
+            this.getPlayerPos.Click += new System.EventHandler(this.getPlayerPos_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(308, 371);
+            this.ClientSize = new System.Drawing.Size(308, 471);
+            this.Controls.Add(this.getPlayerPos);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.propPosZ);
             this.Controls.Add(this.label5);
@@ -228,9 +240,9 @@
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(324, 410);
+            this.MaximumSize = new System.Drawing.Size(324, 510);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(324, 410);
+            this.MinimumSize = new System.Drawing.Size(324, 510);
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "CVROfflinePreview | CVR地图离线预览";
@@ -259,5 +271,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox propPosZ;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button getPlayerPos;
     }
 }
