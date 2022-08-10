@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnityEngine.SceneManagement;
 using static ABI_RC.Core.Util.CVRSyncHelper;
+using ABI_RC.Core.Savior;
 
 namespace CVROfflinePreview
 {
@@ -40,6 +41,10 @@ namespace CVROfflinePreview
         {
 
             SceneManager.LoadSceneAsync("Init");
+
+            // Set temporary Owner ID
+            // Methods such as CVRPickupObject.IsGrabbedByMe() will erroneously pass if not set
+            MetaPort.Instance.ownerId = "Test";
         }
 
         private void Form1_Load(object sender, EventArgs e)
